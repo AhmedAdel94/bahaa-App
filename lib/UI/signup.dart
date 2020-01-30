@@ -9,12 +9,15 @@ class _SignUpState extends State<SignUp> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+  var size = 40.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
         child: SingleChildScrollView(
           child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               SizedBox(
                 height: 40,
@@ -35,7 +38,11 @@ class _SignUpState extends State<SignUp> {
               SizedBox(
                 height: 10,
               ),
-              createAccount(),
+              socialIcons(),
+              SizedBox(
+                height: 10,
+              ),
+              Center(child: createAccount()),
               SizedBox(
                 height: 10,
               ),
@@ -173,10 +180,23 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Widget socialIcons(){
-
+  Widget socialIcons() {
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(
+            'assets/images/Google.png',
+            width: size,
+            height: size,
+          ),
+          SizedBox(width: 10,),
+          Image.asset('assets/images/facebook.png', width: size, height: size),
+        ],
+      ),
+    );
   }
-  
+
   Widget createAccount() {
     return Column(
       children: <Widget>[
@@ -188,7 +208,7 @@ class _SignUpState extends State<SignUp> {
         InkWell(
           onTap: () {},
           child: Text(
-            "Create an account.",
+            "Terms and Conditions.",
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 20, color: Color(0xff0dbea8)),
           ),

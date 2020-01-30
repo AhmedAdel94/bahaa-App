@@ -111,7 +111,9 @@ class _LoginState extends State<Login> {
     return Padding(
       padding: EdgeInsets.all(20),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(context, '/home');
+        },
         child: Container(
           decoration: BoxDecoration(
             color: Color(0xff0dbea8),
@@ -175,7 +177,9 @@ class _LoginState extends State<Login> {
           style: TextStyle(fontSize: 20),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, '/signUp');
+          },
           child: Text(
             "Create an account.",
             textAlign: TextAlign.center,
