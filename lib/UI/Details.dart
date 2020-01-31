@@ -7,6 +7,7 @@ class Details extends StatefulWidget {
 }
 
 class _DetailsState extends State<Details> {
+  int choice = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +39,8 @@ class _DetailsState extends State<Details> {
           padding: EdgeInsets.only(left: 20, right: 20),
           child: SingleChildScrollView(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
+              //mainAxisSize: MainAxisSize.max,
+              //mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Center(
@@ -51,7 +53,14 @@ class _DetailsState extends State<Details> {
                 SizedBox(
                   height: 10,
                 ),
-                data(),
+                Visibility(
+                  visible: choice == 0,
+                  child: data(),
+                ),
+                Visibility(
+                  visible: choice == 1,
+                  child: review(),
+                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -69,29 +78,51 @@ class _DetailsState extends State<Details> {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Container(
-          padding: EdgeInsets.only(top: 10, bottom: 10, left: 15, right: 15),
-          decoration: BoxDecoration(
-            color: Color(0xffE8E7E7),
-            borderRadius: BorderRadius.all(
-              Radius.circular(50),
+        InkWell(
+          onTap: () {
+            setState(() {
+              choice = 0;
+            });
+          },
+          child: Container(
+            padding: EdgeInsets.only(top: 10, bottom: 10, left: 15, right: 15),
+            decoration: BoxDecoration(
+              color: choice == 0 ? Color(0xffE8E7E7) : Colors.white,
+              borderRadius: BorderRadius.all(
+                Radius.circular(50),
+              ),
             ),
-          ),
-          child: Text(
-            "Details",
-            style: TextStyle(
-              color: Color(0xff0dbea8),
+            child: Text(
+              "Details",
+              style: TextStyle(
+                color: choice == 0 ? Color(0xff0dbea8) : Colors.black,
+              ),
             ),
           ),
         ),
         SizedBox(
           width: 15,
         ),
-        Container(
-          //color: Color(0xffE8E7E7),
-          child: Text(
-            "Reviewes",
-            style: TextStyle(color: Color(0xff515C6F)),
+        InkWell(
+          onTap: () {
+            setState(() {
+              choice = 1;
+            });
+          },
+          child: Container(
+            padding: EdgeInsets.only(top: 10, bottom: 10, left: 15, right: 15),
+            decoration: BoxDecoration(
+              color: choice == 1 ? Color(0xffE8E7E7) : Colors.white,
+              borderRadius: BorderRadius.all(
+                Radius.circular(50),
+              ),
+            ),
+            child: Text(
+              "Reviewes",
+              style: TextStyle(
+                color: choice == 1 ? Color(0xff0dbea8) : Colors.black,
+              ),
+            ),
           ),
         ),
       ],
@@ -149,9 +180,39 @@ class _DetailsState extends State<Details> {
     );
   }
 
+  Widget review() {
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Column(
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  Image.asset('assets/images/person.png'),
+                  SizedBox(width: 5,),
+                  Text("Jack")
+                ],
+              ),
+              Image.asset('assets/images/Rating.png'),
+            ],
+          ),
+          Padding(
+            padding: EdgeInsets.only(left:48.0,right: 0,top: 10),
+            child: Text(
+              "Excellent performance and a stylish and functional design make the Xiaomi simply one of the best laptops available",
+              style: TextStyle(fontSize: 14),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
   Widget loginButton() {
     return Padding(
-      padding: EdgeInsets.only(left:20,right: 20,bottom: 20),
+      padding: EdgeInsets.only(left: 20, right: 20,bottom: 10),
       child: InkWell(
         onTap: () {
           //Navigator.pushNamed(context, '/home');
@@ -171,8 +232,6 @@ class _DetailsState extends State<Details> {
               ),
             ],
           ),
-          //width: double.infinity,
-          //height: 40,
           child: Container(
             padding: EdgeInsets.only(left: 25, right: 10),
             child: Row(
