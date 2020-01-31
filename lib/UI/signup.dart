@@ -14,6 +14,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Container(
         child: SingleChildScrollView(
           child: Column(
@@ -68,7 +69,7 @@ class _SignUpState extends State<SignUp> {
         'Sign Up',
         style: TextStyle(
             color: Color(0xff0dbea8),
-            fontSize: 40,
+            fontSize: 41,
             fontWeight: FontWeight.w800),
       ),
     );
@@ -80,7 +81,7 @@ class _SignUpState extends State<SignUp> {
       child: Container(
         decoration: BoxDecoration(
             color: Color(0xffe7e7e7),
-            borderRadius: BorderRadius.all(Radius.circular(50))),
+            borderRadius: BorderRadius.all(Radius.circular(40))),
         child: Column(
           children: <Widget>[
             SizedBox(

@@ -11,6 +11,27 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Colors.white,
+        actions: <Widget>[
+          Icon(
+            Icons.chat_bubble,
+            color: Color(0xff515C6F),
+          ),
+          SizedBox(
+            width: 15,
+          ),
+          Icon(
+            Icons.notifications,
+            color: Color(0xff515C6F),
+          ),
+          SizedBox(
+            width: 15,
+          )
+        ],
+      ),
       bottomNavigationBar: BottomMenu(0),
       body: Container(
         child: Padding(
@@ -20,9 +41,9 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                SizedBox(
-                  height: 100,
-                ),
+                // SizedBox(
+                //   height: 100,
+                // ),
                 title("Categories"),
                 SizedBox(
                   height: 10,
@@ -52,22 +73,21 @@ class _HomeState extends State<Home> {
     );
   }
 
-  Widget categoryItem(Color color, String title) {
+  Widget categoryItem(String img, String title) {
     return Column(
       children: <Widget>[
         Container(
-          width: 60,
-          height: 60,
+          width: 80,
+          height: 80,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: color,
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Image.asset(
-              'assets/images/shoe.png',
-              width: 30,
-              height: 30,
+              img,
+              width: 40,
+              height: 40,
             ),
           ),
         ),
@@ -84,9 +104,10 @@ class _HomeState extends State<Home> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          categoryItem(Color(0xff0dbea8), "Shoes"),
-          categoryItem(Color(0xff0dbea8), "Shoes"),
-          categoryItem(Color(0xff0dbea8), "Shoes"),
+          categoryItem("assets/images/Electronics.png", "Electronics"),
+          categoryItem("assets/images/Beauty.png", "Beauty"),
+          categoryItem("assets/images/Shoes.png", "Shoes"),
+          //categoryItem("assets/images/seeAll.png", "Shoes"),
           seeAll()
         ],
       ),
@@ -95,13 +116,26 @@ class _HomeState extends State<Home> {
 
   Widget seeAll() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
+        SizedBox(height: 10,),
         Container(
-          width: 60,
-          height: 60,
+          width: 65,
+          height: 65,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
             color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Color(0xFFE7EAF0),
+                blurRadius: 2.0, // has the effect of softening the shadow
+                spreadRadius: 2.0, // has the effect of extending the shadow
+                offset: Offset(
+                  0.0, // horizontal, move right 10
+                  2.0, // vertical, move down 10
+                ),
+              )
+            ],
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -111,6 +145,7 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
+         SizedBox(height: 10,),
         Text("See All")
       ],
     );
@@ -219,19 +254,19 @@ class _HomeState extends State<Home> {
   }
 
   Widget item({String img, String title, String price}) {
-      return Column(
-        children: <Widget>[
-          new ClipRRect(
-            borderRadius: new BorderRadius.circular(20.0),
-            child: Image.asset(
-              img,
-              height: 100.0,
-              width: 100.0,
-            ),
+    return Column(
+      children: <Widget>[
+        new ClipRRect(
+          borderRadius: new BorderRadius.circular(20.0),
+          child: Image.asset(
+            img,
+            height: 100.0,
+            width: 100.0,
           ),
-          Text(title),
-          Text(price)
-        ],
+        ),
+        Text(title),
+        Text(price)
+      ],
     );
   }
 
@@ -243,9 +278,18 @@ class _HomeState extends State<Home> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          item(img: 'assets/images/boots.jpg',title: "Ankle Boots",price: "\$39.99"),
-          item(img: 'assets/images/boots.jpg',title: "Ankle Boots",price: "\$39.99"),
-          item(img: 'assets/images/boots.jpg',title: "Ankle Boots",price: "\$39.99"),
+          item(
+              img: 'assets/images/boots.jpg',
+              title: "Ankle Boots",
+              price: "\$39.99"),
+          item(
+              img: 'assets/images/boots.jpg',
+              title: "Ankle Boots",
+              price: "\$39.99"),
+          item(
+              img: 'assets/images/boots.jpg',
+              title: "Ankle Boots",
+              price: "\$39.99"),
         ],
       ),
     );
