@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 
 class BottomMenu extends StatefulWidget {
+  int selectedIndex;
+  BottomMenu(this.selectedIndex);
   @override
   _BottomMenuState createState() => _BottomMenuState();
 }
 
 class _BottomMenuState extends State<BottomMenu> {
-  int _selectedIndex = 0;
+  //int _selectedIndex = 0;
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
+      backgroundColor: Colors.white,
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
@@ -32,7 +35,7 @@ class _BottomMenuState extends State<BottomMenu> {
           title: Text('More'),
         ),
       ],
-      currentIndex: _selectedIndex,
+      currentIndex: widget.selectedIndex,
       selectedItemColor:  Color(0xff0dbea8),
       unselectedItemColor:Color(0xff515C6F),
       showSelectedLabels: true,
