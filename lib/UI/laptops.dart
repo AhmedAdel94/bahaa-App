@@ -1,3 +1,4 @@
+import 'package:bahaa2/UI/Filters.dart';
 import 'package:flutter/material.dart';
 
 class Laptops extends StatefulWidget {
@@ -89,7 +90,14 @@ class _LaptopsState extends State<Laptops> {
 
   Widget drawFilterButton() {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        showDialog(
+            context: context,
+            child: new AlertDialog(
+              //title: new Text("My Super title"),
+              content: Filters(),
+            ));
+      },
       child: Container(
         // width: 50,
         // height: 50,
