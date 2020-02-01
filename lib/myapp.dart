@@ -1,6 +1,7 @@
 import 'package:bahaa2/UI/Details.dart';
 import 'package:bahaa2/UI/Home.dart';
 import 'package:bahaa2/UI/SubCategories.dart';
+import 'package:bahaa2/UI/laptops.dart';
 import 'package:bahaa2/UI/login.dart';
 import 'package:bahaa2/UI/signup.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,7 @@ class _MyAppState extends State<MyApp> {
         '/home': (BuildContext context) => Home(),
         '/details': (BuildContext context) => Details(),
         '/subCats':(BuildContext context) => SubCategories(),
+        '/lapTops':(BuildContext context) => Laptops(),
       }
     );
   }

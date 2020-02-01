@@ -74,25 +74,30 @@ class _HomeState extends State<Home> {
   }
 
   Widget categoryItem(String img, String title) {
-    return Column(
-      children: <Widget>[
-        Container(
-          width: 80,
-          height: 80,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset(
-              img,
-              width: 40,
-              height: 40,
+    return InkWell(
+      onTap: () {
+        Navigator.pushNamed(context, '/subCats');
+      },
+      child: Column(
+        children: <Widget>[
+          Container(
+            width: 80,
+            height: 80,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset(
+                img,
+                width: 40,
+                height: 40,
+              ),
             ),
           ),
-        ),
-        Text(title)
-      ],
+          Text(title)
+        ],
+      ),
     );
   }
 
@@ -118,7 +123,9 @@ class _HomeState extends State<Home> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        SizedBox(height: 10,),
+        SizedBox(
+          height: 10,
+        ),
         Container(
           width: 65,
           height: 65,
@@ -145,7 +152,9 @@ class _HomeState extends State<Home> {
             ),
           ),
         ),
-         SizedBox(height: 10,),
+        SizedBox(
+          height: 10,
+        ),
         Text("See All")
       ],
     );

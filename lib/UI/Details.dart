@@ -20,9 +20,14 @@ class _DetailsState extends State<Details> {
           "Xiaomi Mi Game Notebook ",
           style: TextStyle(color: Color(0xff515C6F)),
         ),
-        leading: Icon(
-          Icons.arrow_back_ios,
-          color: Color(0xff0dbea8),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Color(0xff0dbea8),
+          ),
         ),
         actions: <Widget>[
           Icon(
@@ -191,7 +196,9 @@ class _DetailsState extends State<Details> {
               Row(
                 children: <Widget>[
                   Image.asset('assets/images/person.png'),
-                  SizedBox(width: 5,),
+                  SizedBox(
+                    width: 5,
+                  ),
                   Text("Jack")
                 ],
               ),
@@ -199,7 +206,7 @@ class _DetailsState extends State<Details> {
             ],
           ),
           Padding(
-            padding: EdgeInsets.only(left:48.0,right: 0,top: 10),
+            padding: EdgeInsets.only(left: 48.0, right: 0, top: 10),
             child: Text(
               "Excellent performance and a stylish and functional design make the Xiaomi simply one of the best laptops available",
               style: TextStyle(fontSize: 14),
@@ -212,7 +219,7 @@ class _DetailsState extends State<Details> {
 
   Widget loginButton() {
     return Padding(
-      padding: EdgeInsets.only(left: 20, right: 20,bottom: 10),
+      padding: EdgeInsets.only(left: 20, right: 20, bottom: 10),
       child: InkWell(
         onTap: () {
           //Navigator.pushNamed(context, '/home');

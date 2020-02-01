@@ -21,9 +21,14 @@ class _SubCategoriesState extends State<SubCategories> {
               fontSize: 30,
               fontWeight: FontWeight.w600),
         ),
-        leading: Icon(
-          Icons.arrow_back_ios,
-          color: Color(0xff0dbea8),
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Color(0xff0dbea8),
+          ),
         ),
         actions: <Widget>[
           Icon(
@@ -56,7 +61,9 @@ class _SubCategoriesState extends State<SubCategories> {
                   height: 40,
                 ),
                 items(),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 categories(),
               ],
             ),
@@ -69,30 +76,35 @@ class _SubCategoriesState extends State<SubCategories> {
   Widget rowItem(String text) {
     return Padding(
         padding: EdgeInsets.only(top: 8, bottom: 8, left: 15, right: 15),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              text,
-              style: TextStyle(fontSize: 15, color: Color(0xff515C6F)),
-            ),
-            Container(
-              //width: 25,
-              height: 30,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
+        child: InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, '/lapTops');
+          },
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text(
+                text,
+                style: TextStyle(fontSize: 15, color: Color(0xff515C6F)),
               ),
-              child: Padding(
-                padding: const EdgeInsets.all(6.0),
-                child: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 10,
-                  color: Color(0xff0dbea8),
+              Container(
+                //width: 25,
+                height: 30,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Colors.white,
                 ),
-              ),
-            )
-          ],
+                child: Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: Icon(
+                    Icons.arrow_forward_ios,
+                    size: 10,
+                    color: Color(0xff0dbea8),
+                  ),
+                ),
+              )
+            ],
+          ),
         ));
   }
 
@@ -127,7 +139,6 @@ class _SubCategoriesState extends State<SubCategories> {
           height: 80,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
