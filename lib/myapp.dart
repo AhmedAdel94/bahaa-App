@@ -26,6 +26,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: '/',
+      theme: new ThemeData(
+        //fontFamily: 'Neusa'
+      ),
       routes: <String, WidgetBuilder>{
         '/': (BuildContext context) => Login(),
         '/signUp': (BuildContext context) => SignUp(),

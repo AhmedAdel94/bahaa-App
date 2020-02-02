@@ -1,5 +1,6 @@
 import 'package:bahaa2/UI/bottomMenu.dart';
 import 'package:flutter/material.dart';
+import 'package:smooth_star_rating/smooth_star_rating.dart';
 
 class Details extends StatefulWidget {
   @override
@@ -8,6 +9,7 @@ class Details extends StatefulWidget {
 
 class _DetailsState extends State<Details> {
   int choice = 0;
+  double rating=0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -202,7 +204,21 @@ class _DetailsState extends State<Details> {
                   Text("Jack")
                 ],
               ),
-              Image.asset('assets/images/Rating.png'),
+              //Image.asset('assets/images/Rating.png'),
+              SmoothStarRating(
+                  allowHalfRating: false,
+                  onRatingChanged: (v) {
+                    // rating = v;
+                    // setState(() {});
+                  },
+                  starCount: 5,
+                  rating: rating,
+                  size: 25.0,
+                  //filledIconData: Icons.blur_off,
+                  halfFilledIconData: Icons.blur_on,
+                  color: Colors.green,
+                  borderColor: Colors.green,
+                  spacing: 0.0)
             ],
           ),
           Padding(
