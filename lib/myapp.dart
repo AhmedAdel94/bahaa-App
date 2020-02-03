@@ -1,3 +1,4 @@
+import 'package:bahaa2/UI/Categories.dart';
 import 'package:bahaa2/UI/Details.dart';
 import 'package:bahaa2/UI/Home.dart';
 import 'package:bahaa2/UI/SubCategories.dart';
@@ -36,6 +37,7 @@ class _MyAppState extends State<MyApp> {
         '/details': (BuildContext context) => Details(),
         '/subCats':(BuildContext context) => SubCategories(),
         '/lapTops':(BuildContext context) => Laptops(),
+        '/categories':(BuildContext context) => Categories(),
       }
     );
   }

@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
         backgroundColor: Colors.white,
         actions: <Widget>[
           Icon(
-            Icons.chat_bubble,
+            Icons.shopping_cart,
             color: Color(0xff515C6F),
           ),
           SizedBox(
@@ -44,11 +44,11 @@ class _HomeState extends State<Home> {
                 // SizedBox(
                 //   height: 100,
                 // ),
-                title("Categories"),
-                SizedBox(
-                  height: 10,
-                ),
-                categories(),
+                // title("Categories"),
+                // SizedBox(
+                //   height: 10,
+                // ),
+                // categories(),
                 SizedBox(
                   height: 15,
                 ),
@@ -70,93 +70,6 @@ class _HomeState extends State<Home> {
       textAlign: TextAlign.left,
       style: TextStyle(
           color: Color(0xff0dbea8), fontSize: 30, fontWeight: FontWeight.w800),
-    );
-  }
-
-  Widget categoryItem(String img, String title) {
-    return InkWell(
-      onTap: () {
-        Navigator.pushNamed(context, '/subCats');
-      },
-      child: Column(
-        children: <Widget>[
-          Container(
-            width: 80,
-            height: 80,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-            ),
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(
-                img,
-                width: 40,
-                height: 40,
-              ),
-            ),
-          ),
-          Text(title)
-        ],
-      ),
-    );
-  }
-
-  Widget categories() {
-    return Container(
-      padding: const EdgeInsets.all(0),
-      margin: EdgeInsets.all(0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          categoryItem("assets/images/Electronics.png", "Electronics"),
-          categoryItem("assets/images/Beauty.png", "Beauty"),
-          categoryItem("assets/images/Shoes.png", "Shoes"),
-          //categoryItem("assets/images/seeAll.png", "Shoes"),
-          seeAll()
-        ],
-      ),
-    );
-  }
-
-  Widget seeAll() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        SizedBox(
-          height: 10,
-        ),
-        Container(
-          width: 65,
-          height: 65,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.white,
-            boxShadow: [
-              BoxShadow(
-                color: Color(0xFFE7EAF0),
-                blurRadius: 2.0, // has the effect of softening the shadow
-                spreadRadius: 2.0, // has the effect of extending the shadow
-                offset: Offset(
-                  0.0, // horizontal, move right 10
-                  2.0, // vertical, move down 10
-                ),
-              )
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Icon(
-              Icons.arrow_forward_ios,
-              color: Color(0xff0dbea8),
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Text("See All")
-      ],
     );
   }
 
@@ -283,22 +196,45 @@ class _HomeState extends State<Home> {
     return Container(
       padding: const EdgeInsets.all(0),
       margin: EdgeInsets.all(0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        // crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
         children: <Widget>[
-          item(
-              img: 'assets/images/boots.jpg',
-              title: "Ankle Boots",
-              price: "\$39.99"),
-          item(
-              img: 'assets/images/boots.jpg',
-              title: "Ankle Boots",
-              price: "\$39.99"),
-          item(
-              img: 'assets/images/boots.jpg',
-              title: "Ankle Boots",
-              price: "\$39.99"),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+            ],
+          ),
+          SizedBox(height: 10,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+            ],
+          ),
         ],
       ),
     );

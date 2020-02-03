@@ -9,6 +9,30 @@ class BottomMenu extends StatefulWidget {
 
 class _BottomMenuState extends State<BottomMenu> {
   //int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    switch(index){
+      case 0:{
+        Navigator.pushNamed(context, '/home');
+      }
+      break;
+      case 1:{
+        //Navigator.pushNamed(context, '/home');
+      }
+      break;
+      case 2:{
+        Navigator.pushNamed(context, '/categories');
+      }
+      break;
+      case 0:{
+        //Navigator.pushNamed(context, '/home');
+      }
+      break;
+      case 0:{
+        //Navigator.pushNamed(context, '/home');
+      }
+      break;
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return BottomNavigationBar(
@@ -23,8 +47,8 @@ class _BottomMenuState extends State<BottomMenu> {
           title: Text('Search'),
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_cart),
-          title: Text('Cart'),
+          icon: Icon(Icons.category),
+          title: Text('Categories'),
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
@@ -40,7 +64,7 @@ class _BottomMenuState extends State<BottomMenu> {
       unselectedItemColor:Color(0xff515C6F),
       showSelectedLabels: true,
       showUnselectedLabels: true,
-      //onTap: _onItemTapped,
+      onTap: _onItemTapped,
     );
   }
 }
