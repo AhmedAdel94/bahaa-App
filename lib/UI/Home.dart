@@ -13,6 +13,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        leading: Container(),
         elevation: 0.0,
         backgroundColor: Colors.white,
         actions: <Widget>[
@@ -182,8 +183,8 @@ class _HomeState extends State<Home> {
           borderRadius: new BorderRadius.circular(20.0),
           child: Image.asset(
             img,
-            height: 100.0,
-            width: 100.0,
+            height: 90.0,
+            width: 90.0,
           ),
         ),
         Text(title),

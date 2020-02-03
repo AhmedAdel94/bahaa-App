@@ -135,8 +135,8 @@ class _SubCategoriesState extends State<SubCategories> {
     return Column(
       children: <Widget>[
         Container(
-          width: 80,
-          height: 80,
+          width: 70,
+          height: 70,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
           ),
