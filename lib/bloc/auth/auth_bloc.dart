@@ -6,7 +6,7 @@ import 'dart:io';
 import 'package:bahaa2/bloc/auth/auth_event.dart';
 import 'package:bahaa2/bloc/auth/auth_state.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-// import 'package:flutter_facebook_login/flutter_facebook_login.dart' ;
+import 'package:flutter_facebook_login/flutter_facebook_login.dart' ;
 
 import '../bloc.dart';
 
@@ -45,8 +45,8 @@ class AuthBloc extends BLoC<AuthEvent> {
       if (event.loginType == LoginType.withGoogle) {
         _loginWithGoogle();
       }
-      if (event.loginType == LoginType.withGoogle) {
-        //_loginWithFacebook();
+      if (event.loginType == LoginType.withFacebook) {
+        _loginWithFacebook();
       }
     }
     if (event is CheckUserState) {}
@@ -57,23 +57,23 @@ class AuthBloc extends BLoC<AuthEvent> {
     // }
   }
 
-  // Future<void> _loginWithFacebook() async {
-  //   final facebookLogin = FacebookLogin();
-  //   final result = await facebookLogin.logIn(['email']);
+  Future<void> _loginWithFacebook() async {
+    final facebookLogin = FacebookLogin();
+    final result = await facebookLogin.logIn(['email']);
 
-  //   switch (result.status) {
-  //     case FacebookLoginStatus.loggedIn:
-  //       // _sendTokenToServer(result.accessToken.token);
-  //       // _showLoggedInUI();
-  //       break;
-  //     case FacebookLoginStatus.cancelledByUser:
-  //       //_showCancelledMessage();
-  //       break;
-  //     case FacebookLoginStatus.error:
-  //       //_showErrorOnUI(result.errorMessage);
-  //       break;
-  //   }
-  // }
+    switch (result.status) {
+      case FacebookLoginStatus.loggedIn:
+        // _sendTokenToServer(result.accessToken.token);
+        // _showLoggedInUI();
+        break;
+      case FacebookLoginStatus.cancelledByUser:
+        //_showCancelledMessage();
+        break;
+      case FacebookLoginStatus.error:
+        //_showErrorOnUI(result.errorMessage);
+        break;
+    }
+  }
 
   Future<void> _loginWithGoogle() async {
     print('login with google is tapped');
