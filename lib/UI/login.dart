@@ -1,3 +1,5 @@
+import 'package:bahaa2/bloc/auth/auth_bloc.dart';
+import 'package:bahaa2/bloc/auth/auth_event.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -8,7 +10,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+  final bloc = AuthBloc.instance();
+  var size = 30.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +36,10 @@ class _LoginState extends State<Login> {
                 height: 30,
               ),
               loginButton(),
+              SizedBox(
+                height: 10,
+              ),
+              socialIcons(),
               SizedBox(
                 height: 10,
               ),
@@ -168,6 +175,36 @@ class _LoginState extends State<Login> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget socialIcons() {
+    return Center(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          InkWell(
+            onTap: () {
+              bloc.dispatch(LoginTapped(LoginType.withFacebook));
+            },
+            child: Image.asset(
+              'assets/images/facebook.png',
+              width: size,
+              height: size,
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          InkWell(
+            onTap: () {
+              bloc.dispatch(LoginTapped(LoginType.withGoogle));
+            },
+            child: Image.asset('assets/images/Google.png',
+                width: size, height: size),
+          ),
+        ],
       ),
     );
   }

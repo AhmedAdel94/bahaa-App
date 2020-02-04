@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>251059663412-640fr2knjpr8ecrtabgkmvmitfou4qhn.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.251059663412-640fr2knjpr8ecrtabgkmvmitfou4qhn</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCM37FE6S87pJ0ORFLR_Dww43707701zDE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>251059663412</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.bahaa2</string>
+	<key>PROJECT_ID</key>
+	<string>memeshopping-2241e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>memeshopping-2241e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:251059663412:ios:5f6b2a09d0516480855061</string>
+	<key>DATABASE_URL</key>
+	<string>https://memeshopping-2241e.firebaseio.com</string>
+</dict>
+</plist>
