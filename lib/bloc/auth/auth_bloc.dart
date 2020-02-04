@@ -43,7 +43,7 @@ class AuthBloc extends BLoC<AuthEvent> {
       _logOut();
     }
     if (event is ResetPasswordTapped) {
-      //await _resetPassword(event.email);
+      await _resetPassword(event.email);
     }
     if (event is LoginTapped) {
       if (event.loginType == LoginType.withEmail) {
@@ -94,7 +94,7 @@ class AuthBloc extends BLoC<AuthEvent> {
     );
     try {
       var user = await _googleSignIn.signIn();
-      if(user!=null){
+      if (user != null) {
         print(user.displayName);
         authStateSubject.sink.add(LoginCompleted());
       }
@@ -103,15 +103,10 @@ class AuthBloc extends BLoC<AuthEvent> {
     }
   }
 
-  // Future<bool> _resetPassword(String email) async {
-  //   bool sent;
-  //   await netFunc(() async {
-  //     sent = true;
-  //     print(email);
-  //     authStateSubject.sink.add(PasswordResetIs(sent));
-  //   });
-  //   return sent;
-  // }
+  Future<bool> _resetPassword(String email) async {
+    await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    authStateSubject.sink.add(PasswordResetMailSent(true));
+  }
 
   Future<void> _loginWithEmail(LoginTapped event) async {
     AuthResult result = await FirebaseAuth.instance
@@ -121,7 +116,7 @@ class AuthBloc extends BLoC<AuthEvent> {
       throw error.toString();
     });
     FirebaseUser fuser = result.user;
-    if(fuser!=null){
+    if (fuser != null) {
       print("Logged in");
       authStateSubject.sink.add(LoginCompleted());
     }
@@ -131,7 +126,8 @@ class AuthBloc extends BLoC<AuthEvent> {
     final FirebaseUser user = (await _auth.createUserWithEmailAndPassword(
       email: event.email,
       password: event.password,
-    )).user;
+    ))
+        .user;
     authStateSubject.sink.add(SignUpCompleted());
   }
 

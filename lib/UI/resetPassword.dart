@@ -5,30 +5,28 @@ import 'package:bahaa2/bloc/auth/auth_event.dart';
 import 'package:bahaa2/bloc/auth/auth_state.dart';
 import 'package:flutter/material.dart';
 
-class Login extends StatefulWidget {
+class ResetPassword extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _ResetPasswordState createState() => _ResetPasswordState();
 }
 
-class _LoginState extends State<Login> {
+class _ResetPasswordState extends State<ResetPassword> {
   TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
   final bloc = AuthBloc.instance();
 
   var size = 30.0;
   GlobalKey<FormState> formKey = GlobalKey();
   List<StreamSubscription> subs = List();
-
+  
   void initState() {
     super.initState();
     subs.add(bloc.authStateSubject.listen((AuthState state) {
-      if (state is LoginCompleted) {
+      if (state is PasswordResetMailSent) {
         //print(state.user.email);
-        Navigator.pushNamedAndRemoveUntil(context, '/home',(r)=>false);
+        Navigator.pushNamed(context, '/');
       }
     }));
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,8 +34,6 @@ class _LoginState extends State<Login> {
       body: Container(
         child: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               SizedBox(
                 height: 40,
@@ -55,16 +51,9 @@ class _LoginState extends State<Login> {
                 height: 30,
               ),
               loginButton(),
-              SizedBox(height: 5,),
-              forgotPassword(),
-              SizedBox(
-                height: 20,
-              ),
-              socialIcons(),
               SizedBox(
                 height: 10,
               ),
-              Center(child: createAccount()),
             ],
           ),
         ),
@@ -111,10 +100,6 @@ class _LoginState extends State<Login> {
                   height: 20,
                 ),
                 formField("Email", emailController, false),
-                SizedBox(
-                  height: 10,
-                ),
-                formField("Password", passwordController, true),
               ],
             ),
           )),
@@ -148,9 +133,7 @@ class _LoginState extends State<Login> {
         onTap: () {
           //Navigator.pushNamed(context, '/home');
           if (formKey.currentState.validate()) {
-            bloc.dispatch(LoginTapped(LoginType.withEmail,
-                email: emailController.text,
-                password: passwordController.text));
+            bloc.dispatch(ResetPasswordTapped(emailController.text));
           }
         },
         child: Container(
@@ -178,7 +161,7 @@ class _LoginState extends State<Login> {
               children: <Widget>[
                 Expanded(
                   child: Text(
-                    "LOG IN",
+                    "Reset Password",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.white,
@@ -202,74 +185,6 @@ class _LoginState extends State<Login> {
               ],
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget socialIcons() {
-    return Center(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          InkWell(
-            onTap: () {
-              bloc.dispatch(LoginTapped(LoginType.withFacebook));
-            },
-            child: Image.asset(
-              'assets/images/facebook.png',
-              width: size,
-              height: size,
-            ),
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          InkWell(
-            onTap: () {
-              bloc.dispatch(LoginTapped(LoginType.withGoogle));
-            },
-            child: Image.asset('assets/images/Google.png',
-                width: size, height: size),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget createAccount() {
-    return Column(
-      children: <Widget>[
-        Text(
-          "Don't have an account?",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 20),
-        ),
-        InkWell(
-          onTap: () {
-            Navigator.pushNamed(context, '/signUp');
-          },
-          child: Text(
-            "Create an account.",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20, color: Color(0xff0dbea8)),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget forgotPassword() {
-    return Padding(
-      padding: const EdgeInsets.only(left: 20,right: 20),
-      child: InkWell(
-        onTap: () {
-          Navigator.pushNamed(context, '/resetPass');
-        },
-        child: Text(
-          "Forgot password?",
-          textAlign: TextAlign.left,
-          style: TextStyle(fontSize: 15, color: Color(0xff0dbea8)),
         ),
       ),
     );
