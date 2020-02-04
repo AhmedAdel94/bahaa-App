@@ -21,12 +21,16 @@ class _LoginState extends State<Login> {
 
   void initState() {
     super.initState();
-    subs.add(bloc.authStateSubject.listen((AuthState state) {
-      if (state is LoginCompleted) {
-        //print(state.user.email);
-        Navigator.pushNamedAndRemoveUntil(context, '/home',(r)=>false);
-      }
-    }));
+    subs.add(
+      bloc.authStateSubject.listen(
+        (AuthState state) {
+          if (state is LoginCompleted) {
+            //print(state.user.email);
+            Navigator.pushNamedAndRemoveUntil(context, '/home', (r) => false);
+          }
+        },
+      ),
+    );
   }
 
   @override
@@ -55,7 +59,9 @@ class _LoginState extends State<Login> {
                 height: 30,
               ),
               loginButton(),
-              SizedBox(height: 5,),
+              SizedBox(
+                height: 5,
+              ),
               forgotPassword(),
               SizedBox(
                 height: 20,
@@ -261,7 +267,7 @@ class _LoginState extends State<Login> {
 
   Widget forgotPassword() {
     return Padding(
-      padding: const EdgeInsets.only(left: 20,right: 20),
+      padding: const EdgeInsets.only(left: 20, right: 20),
       child: InkWell(
         onTap: () {
           Navigator.pushNamed(context, '/resetPass');

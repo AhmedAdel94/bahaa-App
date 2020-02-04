@@ -42,20 +42,12 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                // SizedBox(
-                //   height: 100,
-                // ),
-                // title("Categories"),
-                // SizedBox(
-                //   height: 10,
-                // ),
-                // categories(),
                 SizedBox(
                   height: 15,
                 ),
                 title("Latest"),
-                latestItem(),
-                // slider(),
+                //latestItem(),
+                 slider(),
                 items(),
               ],
             ),
@@ -79,7 +71,7 @@ class _HomeState extends State<Home> {
       children: <Widget>[
         Image.asset('assets/images/Base.png'),
         Padding(
-          padding: EdgeInsets.only(left: 50, top: 50),
+          padding: EdgeInsets.only(left: 40, top: 40),
           child: Container(
             width: 110,
             child: Column(
@@ -159,7 +151,7 @@ class _HomeState extends State<Home> {
 
   Widget slider() {
     return CarouselSlider(
-      viewportFraction: 0.8,
+      viewportFraction: 1.0,
       initialPage: 0,
       height: 201.0,
       enableInfiniteScroll: false,
@@ -167,8 +159,8 @@ class _HomeState extends State<Home> {
         return Builder(
           builder: (BuildContext context) {
             return Container(
-                width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 5.0),
+                // width: MediaQuery.of(context).size.width,
+                // margin: EdgeInsets.symmetric(horizontal: 0),
                 child: latestItem());
           },
         );
