@@ -164,7 +164,7 @@ class _LaptopsState extends State<Laptops> {
           Navigator.pushNamed(context, '/details');
         },
         child: Container(
-          width: 135,
+          //width: 135,
           decoration: BoxDecoration(
             color: Color(0xffe7e7e7),
             borderRadius: BorderRadius.all(

@@ -73,7 +73,7 @@ class _ResetPasswordState extends State<ResetPassword> {
   Widget loginText() {
     return Center(
       child: Text(
-        'Log In',
+        'Reset Password',
         style: TextStyle(
             color: Color(0xff0dbea8),
             fontSize: 41,
