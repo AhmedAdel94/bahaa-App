@@ -25,6 +25,11 @@ dependencies:
   rxdart: ^0.22.6
   google_sign_in: ^4.1.1
   flutter_facebook_login: ^3.0.0
+  firebase_auth: ^0.15.4
+  json_annotation: 3.0.0
+  json_serializable: ^3.2.3
+  build_runner: 1.6.5
+
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

@@ -6,13 +6,16 @@ import 'dart:io';
 import 'package:bahaa2/bloc/auth/auth_event.dart';
 import 'package:bahaa2/bloc/auth/auth_state.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:flutter_facebook_login/flutter_facebook_login.dart' ;
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 import '../bloc.dart';
 
 class AuthBloc extends BLoC<AuthEvent> {
   ///// Singleton
   static AuthBloc _authBloc;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
   // GraphCall grapCall = GraphCall();
 
   static AuthBloc instance() {
@@ -32,6 +35,10 @@ class AuthBloc extends BLoC<AuthEvent> {
 
   @override
   void dispatch(AuthEvent event) async {
+    if (event is SignUpTapped) {
+      _signUpWithEmail(event);
+    }
+
     if (event is LogoutTapped) {
       _logOut();
     }
@@ -40,7 +47,7 @@ class AuthBloc extends BLoC<AuthEvent> {
     }
     if (event is LoginTapped) {
       if (event.loginType == LoginType.withEmail) {
-        //_loginWithEmail(event);
+        _loginWithEmail(event);
       }
       if (event.loginType == LoginType.withGoogle) {
         _loginWithGoogle();
@@ -88,38 +95,6 @@ class AuthBloc extends BLoC<AuthEvent> {
     } catch (error) {
       print(error);
     }
-    // AuthUser user = await _authProvider.loginWith(
-    //     method: MethodsType.googleMethod, callType: GraphCall());
-    // if (user != null) {
-    //   authStateSubject.add(LoginCompleted(user));
-    //   // grapCall.saveUser(user);
-    // }
-
-    // await netFunc(
-    //   () async {
-    //     try {
-    //       AuthUser user = await _authProvider.loginWith(
-    //           method: MethodsType.googleMethod, callType: GraphCall());
-    //       if (user != null) {
-    //         // authStateSubject.add(UserIs(user));
-    //         print("login completed");
-    //         // grapCall.saveUser(user);
-    //       }
-    //       ErrorBloc.push(
-    //           LocalError(0, AppStrings.signInWithGoogleFailed, "", "Google"));
-    //     } catch (e) {
-    //       ErrorBloc.push(
-    //           LocalError(0, AppStrings.signInWithGoogleFailed, "", "Google"));
-    //     }
-    //   },
-    // );
-
-    // AuthUser user = await _authProvider.loginWith(method: GoogleAuthMethod());
-    // if (user != null) {
-    //   print("Login Completed");
-    // }
-
-    // print("Credentials are ${user.credintials}");
   }
 
   // Future<bool> _resetPassword(String email) async {
@@ -132,23 +107,25 @@ class AuthBloc extends BLoC<AuthEvent> {
   //   return sent;
   // }
 
-  // Future<void> _loginWithEmail(LoginTapped event) async {
-  //   AuthUser user = await _authProvider.loginWith(
-  //       method:
-  //           EmailLoginMethod(event.email, event.password, AppStrings.apiLink),
-  //       callType: GraphCall(AppStrings.apiLink, AppStrings.loginAuthNode));
-  //   authStateSubject.add(UserIs(user));
-  // }
+  Future<void> _loginWithEmail(LoginTapped event) async {
+    AuthResult result = await FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+            email: event.email, password: event.password)
+        .catchError((error) {
+      throw error.toString();
+    });
+    FirebaseUser fuser = result.user;
+    if(fuser!=null){
+      print("Logged in");
+    }
+  }
 
-  // Future<void> _signUpWithEmail(SignUpTapped event) async {
-  //   netFunc(() async {
-  //     AuthUser user = await _authProvider.loginWith(
-  //         method: EmailSignupMethod(
-  //             event.email, event.password, event.password, AppStrings.apiLink),
-  //         callType: GraphCall(AppStrings.apiLink, AppStrings.signUpUserNode));
-  //     authStateSubject.add(UserIs(user));
-  //   });
-  // }
+  Future<void> _signUpWithEmail(SignUpTapped event) async {
+    final FirebaseUser user = (await _auth.createUserWithEmailAndPassword(
+      email: event.email,
+      password: event.password,
+    )).user;
+  }
 
   // Future<bool> _resetPassword(String email) async {
   //   await netFunc(() async {});
@@ -157,8 +134,6 @@ class AuthBloc extends BLoC<AuthEvent> {
   /*
    * Edit requester's profile info (including email which will need re-verification)
    */
-  Future<void> _editProfile(
-      {String email, String dialCode, String phone, String password}) async {}
 
   dispose() {
     authStateSubject.close();

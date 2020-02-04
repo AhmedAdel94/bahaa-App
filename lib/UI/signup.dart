@@ -1,3 +1,5 @@
+import 'package:bahaa2/bloc/auth/auth_bloc.dart';
+import 'package:bahaa2/bloc/auth/auth_event.dart';
 import 'package:flutter/material.dart';
 
 class SignUp extends StatefulWidget {
@@ -9,6 +11,8 @@ class _SignUpState extends State<SignUp> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final bloc = AuthBloc.instance();
+  GlobalKey<FormState> formKey = GlobalKey();
 
   var size = 40.0;
   @override
@@ -39,10 +43,10 @@ class _SignUpState extends State<SignUp> {
               SizedBox(
                 height: 10,
               ),
-              socialIcons(),
-              SizedBox(
-                height: 10,
-              ),
+              // socialIcons(),
+              // SizedBox(
+              //   height: 10,
+              // ),
               Center(child: createAccount()),
               SizedBox(
                 height: 10,
@@ -79,26 +83,28 @@ class _SignUpState extends State<SignUp> {
     return Padding(
       padding: EdgeInsets.only(left: 20, right: 20),
       child: Container(
-        decoration: BoxDecoration(
-            color: Color(0xffe7e7e7),
-            borderRadius: BorderRadius.all(Radius.circular(40))),
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 20,
+          decoration: BoxDecoration(
+              color: Color(0xffe7e7e7),
+              borderRadius: BorderRadius.all(Radius.circular(40))),
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 20,
+                ),
+                formField("Name", nameController, false),
+                SizedBox(
+                  height: 10,
+                ),
+                formField("Email", emailController, false),
+                SizedBox(
+                  height: 10,
+                ),
+                formField("Password", passwordController, true),
+              ],
             ),
-            formField("Name", nameController, false),
-            SizedBox(
-              height: 10,
-            ),
-            formField("Email", emailController, false),
-            SizedBox(
-              height: 10,
-            ),
-            formField("Password", passwordController, true),
-          ],
-        ),
-      ),
+          )),
     );
   }
 
@@ -126,7 +132,13 @@ class _SignUpState extends State<SignUp> {
     return Padding(
       padding: EdgeInsets.all(20),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          if (formKey.currentState.validate()) {
+            bloc.dispatch(SignUpTapped(
+                email: emailController.text,
+                password: passwordController.text));
+          }
+        },
         child: Container(
           decoration: BoxDecoration(
             color: Color(0xff0dbea8),
@@ -191,7 +203,9 @@ class _SignUpState extends State<SignUp> {
             width: size,
             height: size,
           ),
-          SizedBox(width: 10,),
+          SizedBox(
+            width: 10,
+          ),
           Image.asset('assets/images/facebook.png', width: size, height: size),
         ],
       ),

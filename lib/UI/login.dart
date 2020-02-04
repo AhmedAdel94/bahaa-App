@@ -12,6 +12,8 @@ class _LoginState extends State<Login> {
   TextEditingController passwordController = TextEditingController();
   final bloc = AuthBloc.instance();
   var size = 30.0;
+  GlobalKey<FormState> formKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,25 +78,27 @@ class _LoginState extends State<Login> {
     return Padding(
       padding: EdgeInsets.only(left: 20, right: 20),
       child: Container(
-        decoration: BoxDecoration(
-          color: Color(0xffe7e7e7),
-          borderRadius: BorderRadius.all(
-            Radius.circular(40),
+          decoration: BoxDecoration(
+            color: Color(0xffe7e7e7),
+            borderRadius: BorderRadius.all(
+              Radius.circular(40),
+            ),
           ),
-        ),
-        child: Column(
-          children: <Widget>[
-            SizedBox(
-              height: 20,
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: 20,
+                ),
+                formField("Email", emailController, false),
+                SizedBox(
+                  height: 10,
+                ),
+                formField("Password", passwordController, true),
+              ],
             ),
-            formField("Email", emailController, false),
-            SizedBox(
-              height: 10,
-            ),
-            formField("Password", passwordController, true),
-          ],
-        ),
-      ),
+          )),
     );
   }
 
@@ -123,7 +127,12 @@ class _LoginState extends State<Login> {
       padding: EdgeInsets.all(20),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/home');
+          //Navigator.pushNamed(context, '/home');
+          if (formKey.currentState.validate()) {
+            bloc.dispatch(LoginTapped(LoginType.withEmail,
+                email: emailController.text,
+                password: passwordController.text));
+          }
         },
         child: Container(
           decoration: BoxDecoration(

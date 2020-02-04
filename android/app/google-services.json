@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "251059663412",
+    "firebase_url": "https://memeshopping-2241e.firebaseio.com",
+    "project_id": "memeshopping-2241e",
+    "storage_bucket": "memeshopping-2241e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:251059663412:android:f0d5d98eb40bea94855061",
+        "android_client_info": {
+          "package_name": "com.example.bahaa2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "251059663412-fr4s7j5ebaga5fdq5sir68qkjnpq60db.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJZipLUdKQ0lgGSeHPDYSbouHprGZMcAA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "251059663412-fr4s7j5ebaga5fdq5sir68qkjnpq60db.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "251059663412-640fr2knjpr8ecrtabgkmvmitfou4qhn.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.bahaa2"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
