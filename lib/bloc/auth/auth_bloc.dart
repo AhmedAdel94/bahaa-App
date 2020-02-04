@@ -71,6 +71,8 @@ class AuthBloc extends BLoC<AuthEvent> {
     switch (result.status) {
       case FacebookLoginStatus.loggedIn:
         // _sendTokenToServer(result.accessToken.token);
+        print(result.accessToken.token);
+        authStateSubject.sink.add(LoginCompleted());
         // _showLoggedInUI();
         break;
       case FacebookLoginStatus.cancelledByUser:
@@ -91,7 +93,11 @@ class AuthBloc extends BLoC<AuthEvent> {
       ],
     );
     try {
-      await _googleSignIn.signIn();
+      var user = await _googleSignIn.signIn();
+      if(user!=null){
+        print(user.displayName);
+        authStateSubject.sink.add(LoginCompleted());
+      }
     } catch (error) {
       print(error);
     }

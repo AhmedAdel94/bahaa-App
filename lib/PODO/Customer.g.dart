@@ -15,5 +15,5 @@ Customer _$CustomerFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$CustomerToJson(Customer instance) => <String, dynamic>{
       'id': instance.id,
-      'name':instance.name
+      'name': instance.name,
     };
