@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:bahaa2/bloc/auth/auth_bloc.dart';
 import 'package:bahaa2/bloc/auth/auth_event.dart';
+import 'package:bahaa2/bloc/auth/auth_state.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -11,8 +14,20 @@ class _LoginState extends State<Login> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final bloc = AuthBloc.instance();
+
   var size = 30.0;
   GlobalKey<FormState> formKey = GlobalKey();
+  List<StreamSubscription> subs = List();
+
+  void initState() {
+    super.initState();
+    subs.add(bloc.authStateSubject.listen((AuthState state) {
+      if (state is LoginCompleted) {
+        //print(state.user.email);
+        Navigator.pushNamed(context, '/home');
+      }
+    }));
+  }
 
   @override
   Widget build(BuildContext context) {

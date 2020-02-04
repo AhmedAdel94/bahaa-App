@@ -16,7 +16,7 @@ class AuthChecked extends AuthState {
 /// When User is successfully logged in
 class LoginCompleted extends AuthState {
   Customer user;
-  LoginCompleted(this.user);
+  LoginCompleted();
 }
 
 /// EVENT : ResetPassword
@@ -35,5 +35,5 @@ class UserIsLoggedOut extends AuthState {}
 /// When Sign up is finished successfully (whether for Performer or Requester)
 class SignUpCompleted extends AuthState {
   Customer user;
-  SignUpCompleted(this.user);
+  SignUpCompleted();
 }

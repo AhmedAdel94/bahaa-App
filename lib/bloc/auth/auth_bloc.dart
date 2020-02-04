@@ -117,6 +117,7 @@ class AuthBloc extends BLoC<AuthEvent> {
     FirebaseUser fuser = result.user;
     if(fuser!=null){
       print("Logged in");
+      authStateSubject.sink.add(LoginCompleted());
     }
   }
 
@@ -125,6 +126,7 @@ class AuthBloc extends BLoC<AuthEvent> {
       email: event.email,
       password: event.password,
     )).user;
+    authStateSubject.sink.add(SignUpCompleted());
   }
 
   // Future<bool> _resetPassword(String email) async {
