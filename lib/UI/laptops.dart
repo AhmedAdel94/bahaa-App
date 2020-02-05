@@ -94,6 +94,8 @@ class _LaptopsState extends State<Laptops> {
         showDialog(
             context: context,
             child: new AlertDialog(
+              //contentPadding: EdgeInsets.all(0),
+              titlePadding: EdgeInsets.all(0),
               //title: new Text("My Super title"),
               content: Filters(),
             ));
@@ -164,7 +166,7 @@ class _LaptopsState extends State<Laptops> {
           Navigator.pushNamed(context, '/details');
         },
         child: Container(
-          //width: 135,
+          width: 135,
           decoration: BoxDecoration(
             color: Color(0xffe7e7e7),
             borderRadius: BorderRadius.all(

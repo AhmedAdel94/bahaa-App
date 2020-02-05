@@ -62,7 +62,7 @@ class _LoginState extends State<Login> {
               SizedBox(
                 height: 5,
               ),
-              forgotPassword(),
+              Center(child: forgotPassword()),
               SizedBox(
                 height: 20,
               ),
@@ -71,6 +71,7 @@ class _LoginState extends State<Login> {
                 height: 10,
               ),
               Center(child: createAccount()),
+              SizedBox(height: 20,),
             ],
           ),
         ),

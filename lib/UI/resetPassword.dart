@@ -17,7 +17,7 @@ class _ResetPasswordState extends State<ResetPassword> {
   var size = 30.0;
   GlobalKey<FormState> formKey = GlobalKey();
   List<StreamSubscription> subs = List();
-  
+
   void initState() {
     super.initState();
     subs.add(bloc.authStateSubject.listen((AuthState state) {
@@ -27,6 +27,7 @@ class _ResetPasswordState extends State<ResetPassword> {
       }
     }));
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +43,7 @@ class _ResetPasswordState extends State<ResetPassword> {
               SizedBox(
                 height: 10,
               ),
-              loginText(),
+              Center(child: loginText()),
               SizedBox(
                 height: 30,
               ),
@@ -74,10 +75,12 @@ class _ResetPasswordState extends State<ResetPassword> {
     return Center(
       child: Text(
         'Reset Password',
+        textAlign: TextAlign.center,
         style: TextStyle(
-            color: Color(0xff0dbea8),
-            fontSize: 41,
-            fontWeight: FontWeight.w800),
+          color: Color(0xff0dbea8),
+          fontSize: 41,
+          fontWeight: FontWeight.w800,
+        ),
       ),
     );
   }

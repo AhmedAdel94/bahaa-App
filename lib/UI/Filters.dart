@@ -11,27 +11,25 @@ class _FiltersState extends State<Filters> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 285,
-      child: Padding(
-        padding: EdgeInsets.all(0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            clear(),
-            SizedBox(
-              height: 40,
-            ),
-            brandFilter(),
-            SizedBox(
-              height: 40,
-            ),
-            priceRange(),
-            SizedBox(
-              height: 30,
-            ),
-            applyFilters()
-          ],
-        ),
+      padding: EdgeInsets.all(0),
+      height: 270,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: <Widget>[
+          clear(),
+          SizedBox(
+            height: 40,
+          ),
+          brandFilter(),
+          SizedBox(
+            height: 40,
+          ),
+          priceRange(),
+          SizedBox(
+            height: 30,
+          ),
+          applyFilters()
+        ],
       ),
     );
   }
@@ -105,24 +103,29 @@ class _FiltersState extends State<Filters> {
           height: 20,
         ),
 
-        Row(
-          children: <Widget>[
-            Text("100", style: TextStyle(fontSize: 12)),
-            RangeSlider(
-              activeColor: Color(0xff0dbea8),
-              values: range,
-              onChanged: (RangeValues newRange) {
-                setState(() {
-                  range = newRange;
-                });
-              },
-              divisions: 100,
-              min: 0,
-              max: 1000,
-              labels: RangeLabels('${range.start}', '${range.end}'),
+        Container(
+          width: 250,
+          child: FittedBox(
+            child: Row(
+              children: <Widget>[
+                Text("100", style: TextStyle(fontSize: 12)),
+                RangeSlider(
+                  activeColor: Color(0xff0dbea8),
+                  values: range,
+                  onChanged: (RangeValues newRange) {
+                    setState(() {
+                      range = newRange;
+                    });
+                  },
+                  divisions: 100,
+                  min: 0,
+                  max: 1000,
+                  labels: RangeLabels('${range.start}', '${range.end}'),
+                ),
+                Text("1000", style: TextStyle(fontSize: 12)),
+              ],
             ),
-            Text("1000", style: TextStyle(fontSize: 12)),
-          ],
+          ),
         ),
         // RangeSliderSample(),
         // CustomSlider(),
