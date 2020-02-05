@@ -1,6 +1,7 @@
 import 'package:bahaa2/UI/bottomMenu.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'dart:math';
 
 class Home extends StatefulWidget {
   @override
@@ -13,7 +14,19 @@ class _HomeState extends State<Home> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: Container(),
+        leading: InkWell(
+          onTap: () {
+            //Navigator.pop(context);
+            print("Logout pressed");
+          },
+          child: Transform.rotate(
+            angle: 180 * pi / 180,
+            child: Icon(
+              Icons.exit_to_app,
+              color: Color(0xff0dbea8),
+            ),
+          ),
+        ),
         elevation: 0.0,
         backgroundColor: Colors.white,
         actions: <Widget>[
@@ -47,7 +60,7 @@ class _HomeState extends State<Home> {
                 ),
                 title("Latest"),
                 //latestItem(),
-                 slider(),
+                slider(),
                 items(),
               ],
             ),
@@ -209,7 +222,9 @@ class _HomeState extends State<Home> {
                   price: "\$39.99"),
             ],
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             // crossAxisAlignment: CrossAxisAlignment.start,
