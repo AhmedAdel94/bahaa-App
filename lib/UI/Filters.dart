@@ -12,7 +12,7 @@ class _FiltersState extends State<Filters> {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(0),
-      height: 270,
+      height: 275,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
