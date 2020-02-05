@@ -17,6 +17,7 @@ class AuthBloc extends BLoC<AuthEvent> {
   final GoogleSignIn _googleSignIn = GoogleSignIn();
   final FirebaseAuth _auth = FirebaseAuth.instance;
   // GraphCall grapCall = GraphCall();
+  String authMethod = "";
 
   static AuthBloc instance() {
     if (_authBloc == null) {
@@ -48,12 +49,15 @@ class AuthBloc extends BLoC<AuthEvent> {
     if (event is LoginTapped) {
       if (event.loginType == LoginType.withEmail) {
         _loginWithEmail(event);
+        authMethod = "email";
       }
       if (event.loginType == LoginType.withGoogle) {
         _loginWithGoogle();
+        authMethod = "google";
       }
       if (event.loginType == LoginType.withFacebook) {
         _loginWithFacebook();
+        authMethod = "facebook";
       }
     }
     if (event is CheckUserState) {}
@@ -145,9 +149,23 @@ class AuthBloc extends BLoC<AuthEvent> {
   }
 
   _logOut() async {
-    //UserProvider.instance().dispose();
-    await removeUser();
-    authStateSubject.add(UserIsLoggedOut());
+    if (authMethod == "email") {
+      //Firebase logout
+      await FirebaseAuth.instance.signOut();
+      authStateSubject.add(UserIsLoggedOut());
+    }
+    if (authMethod == "google") {
+      //google logout
+      GoogleSignIn _googleSignIn = GoogleSignIn();
+      _googleSignIn.signOut();
+      authStateSubject.add(UserIsLoggedOut());
+    }
+    if (authMethod == "facebook") {
+      //facebook logout
+      final facebookLogin = FacebookLogin();
+      await facebookLogin.logOut();
+      authStateSubject.add(UserIsLoggedOut());
+    }
   }
 
   removeUser() async {}

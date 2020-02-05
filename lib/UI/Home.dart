@@ -1,4 +1,9 @@
+import 'dart:async';
+
 import 'package:bahaa2/UI/bottomMenu.dart';
+import 'package:bahaa2/bloc/auth/auth_bloc.dart';
+import 'package:bahaa2/bloc/auth/auth_event.dart';
+import 'package:bahaa2/bloc/auth/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'dart:math';
@@ -9,6 +14,23 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  final bloc = AuthBloc.instance();
+  List<StreamSubscription> subs = List();
+
+  void initState() {
+    super.initState();
+    subs.add(
+      bloc.authStateSubject.listen(
+        (AuthState state) {
+          if (state is UserIsLoggedOut) {
+            //print(state.user.email);
+            Navigator.pushNamedAndRemoveUntil(context, '/', (r) => false);
+          }
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,6 +39,7 @@ class _HomeState extends State<Home> {
         leading: InkWell(
           onTap: () {
             //Navigator.pop(context);
+            bloc.dispatch(LogoutTapped());
             print("Logout pressed");
           },
           child: Transform.rotate(
