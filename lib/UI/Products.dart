@@ -81,20 +81,18 @@ class _ProductsState extends State<Products> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          "Products",
+          "Purchase Products from:",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
         ),
         Padding(
-          padding: EdgeInsets.only(left:0,top: 5),
+          padding: EdgeInsets.only(left: 0, top: 5),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              rowItem("1-Shops"),
-              rowItem("2-Wholesale"),
-              rowItem("3-Retailers"),
-              rowItem("4-Supermarkets"),
-              rowItem("5-Malls"),
+              rowItem("Shops(Wholesale/Retail)"),
+              rowItem("Supermarkets"),
+              rowItem("Malls"),
             ],
           ),
         ),
@@ -107,29 +105,22 @@ class _ProductsState extends State<Products> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Text(
-          "Services",
+          "Purchase Services from:",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
         ),
         Padding(
-          padding: EdgeInsets.only(left:0,top: 5),
+          padding: EdgeInsets.only(left: 0, top: 5),
           child: Column(
             //mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              // Text("1-Health care and centers",style: TextStyle(fontSize: 15,)),
-              // Text("2-Apparel designers",style: TextStyle(fontSize: 15,)),
-              // Text("3-Craftsmen",style: TextStyle(fontSize: 15,)),
-              // Text("4-Repairers",style: TextStyle(fontSize: 15,)),
-              // Text("5-Beauty Clinics",style: TextStyle(fontSize: 15,)),
-              // Text("6-Haircut Saloons",style: TextStyle(fontSize: 15,)),
-              // Text("7-Bakers"),
-              rowItem("1-Health care and centers"),
-              rowItem("2-Apparel designers"),
-              rowItem("3-Craftsmen"),
-              rowItem("4-Repairers"),
-              rowItem("5-Beauty Clinics"),
-              rowItem("6-Haircut Saloons"),
-              rowItem("7-Bakers"),
+              rowItem("Health care and centers"),
+              rowItem("Apparel designers"),
+              rowItem("Craftsmen"),
+              rowItem("Repairers"),
+              rowItem("Beauty Clinics"),
+              rowItem("Haircut Saloons"),
+              rowItem("Bakers"),
             ],
           ),
         ),
@@ -137,9 +128,9 @@ class _ProductsState extends State<Products> {
     );
   }
 
-   Widget rowItem(String text) {
+  Widget rowItem(String text) {
     return Padding(
-      padding: EdgeInsets.only(top: 8, bottom: 8, left: 15, right: 15),
+      padding: EdgeInsets.only(top: 8, bottom: 8, left: 10, right: 0),
       child: InkWell(
         onTap: () {
           Navigator.pushNamed(context, '/categories');
@@ -147,9 +138,28 @@ class _ProductsState extends State<Products> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text(
-              text,
-              style: TextStyle(fontSize: 15, color: Color(0xff515C6F)),
+            Row(
+              children: <Widget>[
+                Container(
+                  width: 50,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(right: 20.0),
+                    child: Image.asset(
+                      "assets/images/shop.png",
+                      // width: 40,
+                      // height: 40,
+                    ),
+                  ),
+                ),
+                Text(
+                  text,
+                  style: TextStyle(fontSize: 15, color: Color(0xff515C6F)),
+                ),
+              ],
             ),
             Container(
               //width: 25,

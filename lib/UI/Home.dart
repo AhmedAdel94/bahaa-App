@@ -77,7 +77,8 @@ class _HomeState extends State<Home> {
                 height: 15,
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 20.0, left: 20, right: 20),
+                padding:
+                    const EdgeInsets.only(bottom: 20.0, left: 20, right: 20),
                 child: title("Latest"),
               ),
               //latestItem(),
@@ -206,8 +207,7 @@ class _HomeState extends State<Home> {
         return Builder(
           builder: (BuildContext context) {
             return Container(
-                width: MediaQuery.of(context).size.width,
-                child: latestItem());
+                width: MediaQuery.of(context).size.width, child: latestItem());
           },
         );
       }).toList(),
@@ -237,6 +237,69 @@ class _HomeState extends State<Home> {
       margin: EdgeInsets.only(top: 10, bottom: 20),
       child: Column(
         children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+              item(
+                  img: 'assets/images/boots.jpg',
+                  title: "Ankle Boots",
+                  price: "\$39.99"),
+            ],
+          ),
+          SizedBox(
+            height: 10,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             // crossAxisAlignment: CrossAxisAlignment.start,
