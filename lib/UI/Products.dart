@@ -90,9 +90,9 @@ class _ProductsState extends State<Products> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              rowItem("Shops(Wholesale/Retail)"),
-              rowItem("Supermarkets"),
-              rowItem("Malls"),
+              rowItem("assets/images/shop.png","Shops(Wholesale/Retail)"),
+              rowItem("assets/images/supermarket.png","Supermarkets"),
+              rowItem("assets/images/malls.png","Malls"),
             ],
           ),
         ),
@@ -114,13 +114,13 @@ class _ProductsState extends State<Products> {
             //mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              rowItem("Health care and centers"),
-              rowItem("Apparel designers"),
-              rowItem("Craftsmen"),
-              rowItem("Repairers"),
-              rowItem("Beauty Clinics"),
-              rowItem("Haircut Saloons"),
-              rowItem("Bakers"),
+              rowItem("assets/images/healthcare.png","Health care and centers"),
+              rowItem("assets/images/Apparel.png","Apparel designers"),
+              rowItem("assets/images/craftsmen.png","Craftsmen"),
+              rowItem("assets/images/repairers.png","Repairers"),
+              rowItem("assets/images/Beauty.png","Beauty Clinics"),
+              rowItem("assets/images/haircut.png","Haircut Saloons"),
+              rowItem("assets/images/bakers.png","Bakers"),
             ],
           ),
         ),
@@ -128,7 +128,7 @@ class _ProductsState extends State<Products> {
     );
   }
 
-  Widget rowItem(String text) {
+  Widget rowItem(String img,String text) {
     return Padding(
       padding: EdgeInsets.only(top: 8, bottom: 8, left: 10, right: 0),
       child: InkWell(
@@ -141,15 +141,15 @@ class _ProductsState extends State<Products> {
             Row(
               children: <Widget>[
                 Container(
-                  width: 50,
-                  height: 50,
+                  width: 60,
+                  height: 60,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(right: 20.0),
+                    padding: const EdgeInsets.only(right: 15.0),
                     child: Image.asset(
-                      "assets/images/shop.png",
+                      img,
                       // width: 40,
                       // height: 40,
                     ),
