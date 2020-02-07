@@ -63,7 +63,7 @@ class _CategoriesState extends State<Categories> {
   Widget categoryItem(String img, String title) {
     return InkWell(
       onTap: () {
-        Navigator.pushNamed(context, '/subCats');
+        Navigator.pushNamed(context, '/shops');
       },
       child: Row(
         children: <Widget>[

@@ -2,6 +2,7 @@ import 'package:bahaa2/UI/Categories.dart';
 import 'package:bahaa2/UI/Details.dart';
 import 'package:bahaa2/UI/Home.dart';
 import 'package:bahaa2/UI/Products.dart';
+import 'package:bahaa2/UI/Shops.dart';
 import 'package:bahaa2/UI/SubCategories.dart';
 import 'package:bahaa2/UI/laptops.dart';
 import 'package:bahaa2/UI/login.dart';
@@ -28,7 +29,7 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
+      initialRoute: '/shops',
       theme: new ThemeData(
         //fontFamily: 'Neusa'
       ),
@@ -42,6 +43,7 @@ class _MyAppState extends State<MyApp> {
         '/categories':(BuildContext context) => Categories(),
         '/resetPass':(BuildContext context) => ResetPassword(),
         '/products':(BuildContext context) => Products(),
+        '/shops':(BuildContext context) => Shops(),
       }
     );
   }

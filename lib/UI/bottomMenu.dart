@@ -31,6 +31,9 @@ class _BottomMenuState extends State<BottomMenu> {
         //Navigator.pushNamed(context, '/home');
       }
       break;
+      default:{
+        
+      }
     }
   }
   @override
