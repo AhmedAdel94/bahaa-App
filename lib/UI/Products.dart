@@ -115,10 +115,10 @@ class _ProductsState extends State<Products> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               rowItem("assets/images/healthcare.png","Health care and centers"),
-              rowItem("assets/images/Apparel.png","Apparel designers"),
+              rowItem("assets/images/ApparelIcon.png","Apparel designers"),
               rowItem("assets/images/craftsmen.png","Craftsmen"),
               rowItem("assets/images/repairers.png","Repairers"),
-              rowItem("assets/images/Beauty.png","Beauty Clinics"),
+              rowItem("assets/images/BeautyIcon.png","Beauty Clinics"),
               rowItem("assets/images/haircut.png","Haircut Saloons"),
               rowItem("assets/images/bakers.png","Bakers"),
             ],
