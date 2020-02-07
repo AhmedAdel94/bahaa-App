@@ -142,7 +142,7 @@ class _ProductsState extends State<Products> {
       padding: EdgeInsets.only(top: 8, bottom: 8, left: 15, right: 15),
       child: InkWell(
         onTap: () {
-          Navigator.pushNamed(context, '/shops');
+          Navigator.pushNamed(context, '/categories');
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
