@@ -17,7 +17,7 @@ class _ProductsState extends State<Products> {
         elevation: 0.0,
         backgroundColor: Colors.white,
         title: Text(
-          "Products&Services",
+          "Products & Services",
           style: TextStyle(
               color: Color(0xff0dbea8),
               fontSize: 20,

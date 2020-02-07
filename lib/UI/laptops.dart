@@ -68,8 +68,8 @@ class _LaptopsState extends State<Laptops> {
                 decoration: InputDecoration(
                   //contentPadding: EdgeInsets.all(12.0),
                   border: InputBorder.none,
-                  hintText: "Category",
-                  hintStyle: TextStyle(color: Colors.grey, fontSize: 18.0),
+                  hintText: "Search Products..",
+                  hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0),
                   prefixIcon: Icon(
                     Icons.search,
                     size: 20,

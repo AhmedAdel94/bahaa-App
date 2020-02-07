@@ -15,6 +15,7 @@ class _CategoriesState extends State<Categories> {
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomMenu(2),
       appBar: AppBar(
+        titleSpacing: 0.0,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
@@ -114,6 +115,7 @@ class _CategoriesState extends State<Categories> {
         children: <Widget>[
           Expanded(
             child: Container(
+              margin: EdgeInsets.only(right: 5.0),
               height: 40,
               decoration: BoxDecoration(
                 color: Color(0xFFE8E7E7),
@@ -124,8 +126,8 @@ class _CategoriesState extends State<Categories> {
                 decoration: InputDecoration(
                   //contentPadding: EdgeInsets.all(12.0),
                   border: InputBorder.none,
-                  hintText: "Category",
-                  hintStyle: TextStyle(color: Colors.grey, fontSize: 18.0),
+                  hintText: "Search in Categories..",
+                  hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0),
                   prefixIcon: Icon(
                     Icons.search,
                     size: 20,

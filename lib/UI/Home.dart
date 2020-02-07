@@ -38,6 +38,7 @@ class _HomeState extends State<Home> {
       drawer: SideDrawer(),
       backgroundColor: Colors.white,
       appBar: AppBar(
+        titleSpacing: 0.0,
         title: searchBar(),
         elevation: 0.0,
         iconTheme: new IconThemeData(
@@ -288,6 +289,7 @@ class _HomeState extends State<Home> {
           Expanded(
             child: Container(
               height: 40,
+              margin: EdgeInsets.only(right: 5.0),
               decoration: BoxDecoration(
                 color: Color(0xFFE8E7E7),
                 borderRadius: BorderRadius.circular(50),
@@ -297,8 +299,8 @@ class _HomeState extends State<Home> {
                 decoration: InputDecoration(
                   //contentPadding: EdgeInsets.all(12.0),
                   border: InputBorder.none,
-                  hintText: "Search",
-                  hintStyle: TextStyle(color: Colors.grey, fontSize: 18.0),
+                  hintText: "Search for Offers..",
+                  hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0),
                   prefixIcon: Icon(
                     Icons.search,
                     size: 20,

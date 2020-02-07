@@ -16,6 +16,7 @@ class _ShopsState extends State<Shops> {
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomMenu(2),
       appBar: AppBar(
+        titleSpacing: 0.0,
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
@@ -175,6 +176,7 @@ class _ShopsState extends State<Shops> {
           Expanded(
             child: Container(
               height: 40,
+              margin: EdgeInsets.only(right: 5.0),
               decoration: BoxDecoration(
                 color: Color(0xFFE8E7E7),
                 borderRadius: BorderRadius.circular(50),
@@ -184,8 +186,8 @@ class _ShopsState extends State<Shops> {
                 decoration: InputDecoration(
                   //contentPadding: EdgeInsets.all(12.0),
                   border: InputBorder.none,
-                  hintText: "Category",
-                  hintStyle: TextStyle(color: Colors.grey, fontSize: 18.0),
+                  hintText: "Search in Shops..",
+                  hintStyle: TextStyle(color: Colors.grey, fontSize: 16.0),
                   prefixIcon: Icon(
                     Icons.search,
                     size: 20,
