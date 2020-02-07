@@ -66,7 +66,7 @@ class _ResetPasswordState extends State<ResetPassword> {
     return Container(
       height: 150,
       child: Center(
-        child: Image.asset('assets/images/africa.png'),
+        child: Image.asset('assets/images/africa.jpg'),
       ),
     );
   }

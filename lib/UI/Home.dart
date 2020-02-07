@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import 'package:bahaa2/UI/Drawer.dart';
 import 'package:bahaa2/UI/bottomMenu.dart';
 import 'package:bahaa2/bloc/auth/auth_bloc.dart';
 import 'package:bahaa2/bloc/auth/auth_event.dart';
 import 'package:bahaa2/bloc/auth/auth_state.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'dart:math';
 
 class Home extends StatefulWidget {
   @override
@@ -16,6 +16,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final bloc = AuthBloc.instance();
   List<StreamSubscription> subs = List();
+  TextEditingController searchController = TextEditingController();
 
   void initState() {
     super.initState();
@@ -34,23 +35,14 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: SideDrawer(),
       backgroundColor: Colors.white,
       appBar: AppBar(
-        leading: InkWell(
-          onTap: () {
-            //Navigator.pop(context);
-            bloc.dispatch(LogoutTapped());
-            print("Logout pressed");
-          },
-          child: Transform.rotate(
-            angle: 180 * pi / 180,
-            child: Icon(
-              Icons.exit_to_app,
-              color: Color(0xff0dbea8),
-            ),
-          ),
-        ),
+        title: searchBar(),
         elevation: 0.0,
+        iconTheme: new IconThemeData(
+          color: Color(0xff0dbea8),
+        ),
         backgroundColor: Colors.white,
         actions: <Widget>[
           Icon(
@@ -78,6 +70,10 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                SizedBox(
+                  height: 30,
+                ),
+                //searchBar(),
                 SizedBox(
                   height: 15,
                 ),
@@ -265,6 +261,39 @@ class _HomeState extends State<Home> {
                   title: "Ankle Boots",
                   price: "\$39.99"),
             ],
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget searchBar() {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              height: 40,
+              decoration: BoxDecoration(
+                color: Color(0xFFE8E7E7),
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: TextField(
+                controller: searchController,
+                decoration: InputDecoration(
+                  //contentPadding: EdgeInsets.all(12.0),
+                  border: InputBorder.none,
+                  hintText: "Category",
+                  hintStyle: TextStyle(color: Colors.grey, fontSize: 18.0),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    size: 20,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),

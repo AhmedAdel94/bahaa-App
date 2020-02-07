@@ -7,21 +7,14 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
+  TextEditingController searchController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomMenu(2),
       appBar: AppBar(
-        elevation: 0.0,
-        backgroundColor: Colors.white,
-        title: Text(
-          "Categories ",
-          style: TextStyle(
-              color: Color(0xff0dbea8),
-              fontSize: 30,
-              fontWeight: FontWeight.w700),
-        ),
         leading: InkWell(
           onTap: () {
             Navigator.pop(context);
@@ -31,6 +24,12 @@ class _CategoriesState extends State<Categories> {
             color: Color(0xff0dbea8),
           ),
         ),
+        title: searchBar(),
+        elevation: 0.0,
+        iconTheme: new IconThemeData(
+          color: Color(0xff0dbea8),
+        ),
+        backgroundColor: Colors.white,
         actions: <Widget>[
           Icon(
             Icons.shopping_cart,
@@ -50,7 +49,7 @@ class _CategoriesState extends State<Categories> {
       ),
       body: Container(
         child: Padding(
-          padding: EdgeInsets.only(left: 20, right: 20,top: 40),
+          padding: EdgeInsets.only(left: 20, right: 20, top: 40),
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[categories()],
@@ -103,6 +102,39 @@ class _CategoriesState extends State<Categories> {
           categoryItem("assets/images/Furnitiure.png", "Furniture"),
           categoryItem("assets/images/Electronics.png", "Electronics"),
           //categoryItem("assets/images/seeAll.png", "Shoes"),
+        ],
+      ),
+    );
+  }
+
+  Widget searchBar() {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              height: 40,
+              decoration: BoxDecoration(
+                color: Color(0xFFE8E7E7),
+                borderRadius: BorderRadius.circular(50),
+              ),
+              child: TextField(
+                controller: searchController,
+                decoration: InputDecoration(
+                  //contentPadding: EdgeInsets.all(12.0),
+                  border: InputBorder.none,
+                  hintText: "Category",
+                  hintStyle: TextStyle(color: Colors.grey, fontSize: 18.0),
+                  prefixIcon: Icon(
+                    Icons.search,
+                    size: 20,
+                    color: Colors.grey,
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );

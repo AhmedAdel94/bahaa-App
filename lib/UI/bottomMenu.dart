@@ -20,14 +20,14 @@ class _BottomMenuState extends State<BottomMenu> {
       }
       break;
       case 2:{
-        Navigator.pushNamed(context, '/categories');
+        Navigator.pushNamed(context, '/products');
       }
       break;
-      case 0:{
+      case 3:{
         //Navigator.pushNamed(context, '/home');
       }
       break;
-      case 0:{
+      case 4:{
         //Navigator.pushNamed(context, '/home');
       }
       break;
