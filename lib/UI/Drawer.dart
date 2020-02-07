@@ -17,7 +17,9 @@ class SideDrawer extends StatelessWidget {
                 // Important: Remove any padding from the ListView.
                 padding: EdgeInsets.zero,
                 children: <Widget>[
-                  Container(),
+                  Container(
+                    child: Image.asset('assets/images/africa.png'),
+                  ),
                   ListTile(
                     title: Text('Profile'),
                     onTap: () {
@@ -34,18 +36,18 @@ class SideDrawer extends StatelessWidget {
                       Navigator.pop(context);
                     },
                   ),
+                  ListTile(
+                    title: Text('Signout'),
+                    onTap: () {
+                      // Update the state of the app.
+                      // ...
+                      bloc.dispatch(LogoutTapped());
+                      print("Logout tapped");
+                      Navigator.pop(context);
+                    },
+                  ),
                 ],
               ),
-            ),
-            ListTile(
-              title: Text('Signout'),
-              onTap: () {
-                // Update the state of the app.
-                // ...
-                bloc.dispatch(LogoutTapped());
-                print("Logout tapped");
-                Navigator.pop(context);
-              },
             ),
           ],
         ),

@@ -53,7 +53,7 @@ class _ShopsState extends State<Shops> {
           padding: EdgeInsets.only(left: 20, right: 20, top: 40),
           child: SingleChildScrollView(
             child: Column(
-              children: <Widget>[categories()],
+              children: <Widget>[shops()],
             ),
           ),
         ),
@@ -92,22 +92,78 @@ class _ShopsState extends State<Shops> {
     );
   }
 
-  Widget categories() {
-    return Container(
-      padding: const EdgeInsets.all(0),
-      margin: EdgeInsets.all(0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          categoryItem("assets/images/zara.jpg", "Zara"),
-          categoryItem("assets/images/apple.png", "Apple"),
-          categoryItem("assets/images/gucci.png", "GUCCI"),
-          // categoryItem("assets/images/Furnitiure.png", "Furniture"),
-          // categoryItem("assets/images/Electronics.png", "Electronics"),
-          //categoryItem("assets/images/seeAll.png", "Shoes"),
-        ],
+  Widget productItem(String logo, String name) {
+    return Padding(
+      padding: EdgeInsets.all(0),
+      child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, '/subCats');
+        },
+        child: Container(
+          width: 135,
+          decoration: BoxDecoration(
+            //color: Color(0xffe7e7e7),
+            borderRadius: BorderRadius.all(
+              Radius.circular(10),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Image.asset(logo,width: 80,height: 80,),
+                SizedBox(
+                  height: 30,
+                ),
+                Center(
+                  child: Text(
+                    name,
+                    style: TextStyle(color: Color(0XFF515C6F), fontSize: 15),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                SizedBox(
+                  height: 3,
+                ),
+              ],
+            ),
+          ),
+        ),
       ),
+    );
+  }
+
+  Widget shops() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            productItem(
+                "assets/images/apple.png", "Apple"),
+            productItem(
+                "assets/images/gucci.png", "GUCCI"),
+          ],
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            productItem(
+                "assets/images/zara.jpg", "ZARA"),
+            productItem(
+                "assets/images/adidas.png", "Adidas"),
+          ],
+        ),
+        SizedBox(
+          height: 10,
+        ),
+      ],
     );
   }
 
@@ -139,65 +195,6 @@ class _ShopsState extends State<Shops> {
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  Widget rowItem(String text) {
-    return Padding(
-      padding: EdgeInsets.only(top: 8, bottom: 8, left: 15, right: 15),
-      child: InkWell(
-        onTap: () {
-          Navigator.pushNamed(context, '/lapTops');
-        },
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              text,
-              style: TextStyle(fontSize: 15, color: Color(0xff515C6F)),
-            ),
-            Container(
-              //width: 25,
-              height: 30,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: Colors.white,
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(6.0),
-                child: Icon(
-                  Icons.arrow_forward_ios,
-                  size: 10,
-                  color: Color(0xff0dbea8),
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget items() {
-    return Container(
-      decoration: BoxDecoration(
-        color: Color(0xffe7e7e7),
-        borderRadius: BorderRadius.all(
-          Radius.circular(15),
-        ),
-      ),
-      child: Column(
-        children: <Widget>[
-          rowItem("Laptops"),
-          rowItem("Screens"),
-          rowItem("Mobiles"),
-          rowItem("Camera"),
-          rowItem("Printers"),
-          rowItem("Desktop Computers"),
-          rowItem("Game Consoles"),
-          rowItem("iPads"),
         ],
       ),
     );

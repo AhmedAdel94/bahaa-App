@@ -63,26 +63,29 @@ class _HomeState extends State<Home> {
       ),
       bottomNavigationBar: BottomMenu(0),
       body: Container(
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20, right: 20),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                // SizedBox(
-                //   height: 10,
-                // ),
-                //searchBar(),
-                SizedBox(
-                  height: 15,
-                ),
-                title("Latest"),
-                //latestItem(),
-                slider(),
-                items(),
-              ],
-            ),
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              // SizedBox(
+              //   height: 10,
+              // ),
+              //searchBar(),
+              SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: title("Latest"),
+              ),
+              //latestItem(),
+              slider(),
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: items(),
+              ),
+            ],
           ),
         ),
       ),
@@ -225,7 +228,7 @@ class _HomeState extends State<Home> {
   Widget items() {
     return Container(
       padding: const EdgeInsets.all(0),
-      margin: EdgeInsets.all(0),
+      margin: EdgeInsets.only(top: 10, bottom: 20),
       child: Column(
         children: <Widget>[
           Row(
@@ -289,7 +292,7 @@ class _HomeState extends State<Home> {
                 decoration: InputDecoration(
                   //contentPadding: EdgeInsets.all(12.0),
                   border: InputBorder.none,
-                  hintText: "Category",
+                  hintText: "Search",
                   hintStyle: TextStyle(color: Colors.grey, fontSize: 18.0),
                   prefixIcon: Icon(
                     Icons.search,
