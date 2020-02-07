@@ -70,9 +70,9 @@ class _HomeState extends State<Home> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                SizedBox(
-                  height: 30,
-                ),
+                // SizedBox(
+                //   height: 10,
+                // ),
                 //searchBar(),
                 SizedBox(
                   height: 15,
@@ -99,29 +99,31 @@ class _HomeState extends State<Home> {
   }
 
   Widget latestItem() {
-    return Stack(
-      children: <Widget>[
-        Image.asset('assets/images/Base.png'),
-        Padding(
-          padding: EdgeInsets.only(left: 40, top: 40),
-          child: Container(
-            width: 110,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  "For all your winter clothing needs",
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                loginButton(),
-              ],
+    return Container(
+      child: Stack(
+        children: <Widget>[
+          Image.asset('assets/images/clothes1.jpg'),
+          Padding(
+            padding: EdgeInsets.only(left: 20, top: 30),
+            child: Container(
+              width: 120,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "For all your winter clothing needs",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  loginButton(),
+                ],
+              ),
             ),
-          ),
-        )
-      ],
+          )
+        ],
+      ),
     );
   }
 
@@ -183,16 +185,19 @@ class _HomeState extends State<Home> {
 
   Widget slider() {
     return CarouselSlider(
+      autoPlay: true,
+      //autoPlayAnimationDuration: Duration(seconds: 2),
+      autoPlayInterval: Duration(seconds: 4),
       viewportFraction: 1.0,
       initialPage: 0,
       height: 201.0,
-      enableInfiniteScroll: false,
+      enableInfiniteScroll: true,
       items: [1, 2].map((i) {
         return Builder(
           builder: (BuildContext context) {
             return Container(
-                // width: MediaQuery.of(context).size.width,
-                // margin: EdgeInsets.symmetric(horizontal: 0),
+                width: MediaQuery.of(context).size.width,
+                margin: EdgeInsets.symmetric(horizontal: 5),
                 child: latestItem());
           },
         );
