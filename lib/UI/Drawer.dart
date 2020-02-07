@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
+import '../bloc/auth/auth_bloc.dart';
+import '../bloc/auth/auth_event.dart';
+
 class SideDrawer extends StatelessWidget {
+  final bloc = AuthBloc.instance();
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -38,6 +42,8 @@ class SideDrawer extends StatelessWidget {
               onTap: () {
                 // Update the state of the app.
                 // ...
+                bloc.dispatch(LogoutTapped());
+                print("Logout tapped");
                 Navigator.pop(context);
               },
             ),

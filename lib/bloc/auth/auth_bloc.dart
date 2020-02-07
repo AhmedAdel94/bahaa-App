@@ -153,18 +153,21 @@ class AuthBloc extends BLoC<AuthEvent> {
       //Firebase logout
       await FirebaseAuth.instance.signOut();
       authStateSubject.add(UserIsLoggedOut());
+      print("Email logout");
     }
     if (authMethod == "google") {
       //google logout
       GoogleSignIn _googleSignIn = GoogleSignIn();
       _googleSignIn.signOut();
       authStateSubject.add(UserIsLoggedOut());
+      print("google logout");
     }
     if (authMethod == "facebook") {
       //facebook logout
       final facebookLogin = FacebookLogin();
       await facebookLogin.logOut();
       authStateSubject.add(UserIsLoggedOut());
+      print("facebook logout");
     }
   }
 
