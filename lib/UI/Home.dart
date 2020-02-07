@@ -76,7 +76,7 @@ class _HomeState extends State<Home> {
                 height: 15,
               ),
               Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20),
+                padding: const EdgeInsets.only(bottom: 20.0, left: 20, right: 20),
                 child: title("Latest"),
               ),
               //latestItem(),
@@ -105,7 +105,13 @@ class _HomeState extends State<Home> {
     return Container(
       child: Stack(
         children: <Widget>[
-          Image.asset('assets/images/clothes1.jpg'),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: Image.asset(
+              'assets/images/clothes1.jpg',
+              fit: BoxFit.cover,
+            ),
+          ),
           Padding(
             padding: EdgeInsets.only(left: 20, top: 30),
             child: Container(
@@ -200,7 +206,6 @@ class _HomeState extends State<Home> {
           builder: (BuildContext context) {
             return Container(
                 width: MediaQuery.of(context).size.width,
-                margin: EdgeInsets.symmetric(horizontal: 5),
                 child: latestItem());
           },
         );
